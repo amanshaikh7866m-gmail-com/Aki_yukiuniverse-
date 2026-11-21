@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100b20">
+<title>AKI × YUKI — Our Little Universe</title>
+<style>
+:root{--bg:#100b20;--pink:#ff9ecb;--lav:#c6b2ff;--white:#fff7fd;--muted:#c9bfd8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--white);font-family:Georgia,'Times New Roman',serif;background:radial-gradient(ellipse at 20% 10%,#38204d 0,transparent 36%),radial-gradient(ellipse at 85% 35%,#29234f 0,transparent 34%),linear-gradient(160deg,#100b20,#171027 60%,#0c1024);min-height:100vh;overflow-x:hidden}
+.stars,.stars:before,.stars:after{position:fixed;inset:0;pointer-events:none;content:"";background-image:radial-gradient(2px 2px at 20px 30px,#fff 55%,transparent),radial-gradient(1px 1px at 90px 80px,#ffd8ef 55%,transparent),radial-gradient(1.5px 1.5px at 160px 140px,#d9d0ff 55%,transparent);background-size:220px 190px;opacity:.45;z-index:0}
+.stars:before{transform:translate(80px,40px);opacity:.4}.stars:after{transform:translate(140px,100px);opacity:.3}
+nav{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:22px clamp(18px,6vw,80px);gap:15px}
+.brand{letter-spacing:3px;font:600 12px Arial,sans-serif;color:#ffe1f1}
+nav a{color:var(--muted);text-decoration:none;font:12px Arial,sans-serif;margin-left:18px}nav a:hover{color:var(--pink)}
+main{position:relative;z-index:1}
+.hero{min-height:78vh;display:grid;place-items:center;text-align:center;padding:50px 20px 80px}
+.moon{width:95px;height:95px;border-radius:50%;margin:0 auto 28px;background:radial-gradient(circle at 35% 30%,#fff8fd,#f4cde7 42%,#bd9bcf 75%);box-shadow:0 0 35px #f5b9e566,0 0 90px #bd9bcf44;position:relative}
+.moon:after{content:"";position:absolute;width:85px;height:85px;border-radius:50%;background:#171027;left:22px;top:-8px}
+.eyebrow{font:11px Arial,sans-serif;letter-spacing:4px;text-transform:uppercase;color:var(--pink)}
+h1{font-size:clamp(42px,8vw,88px);font-weight:400;line-height:1.04;margin:15px 0;background:linear-gradient(100deg,#fff,#ffc4e2 45%,#c9baff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.subtitle{font-size:clamp(16px,2vw,20px);color:var(--muted);line-height:1.7;max-width:570px;margin:18px auto 30px}
+.btn{display:inline-block;border:1px solid #f5b8dc88;border-radius:999px;padding:13px 23px;color:#fff;text-decoration:none;background:#f2a8d51a;font:12px Arial,sans-serif;letter-spacing:1px;cursor:pointer;transition:.25s}
+.btn:hover{background:#f2a8d544;transform:translateY(-2px);box-shadow:0 8px 30px #ed9bc533}
+section{max-width:1000px;margin:auto;padding:65px 22px}
+.section-kicker{text-align:center;color:var(--pink);font:10px Arial,sans-serif;letter-spacing:3px;text-transform:uppercase}
+h2{text-align:center;font-size:clamp(29px,5vw,44px);font-weight:400;margin:12px 0 12px}
+.lead{text-align:center;color:var(--muted);line-height:1.7;max-width:590px;margin:0 auto 35px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.card{border:1px solid #e9c6ed2b;background:linear-gradient(145deg,#ffffff0d,#ffffff05);border-radius:20px;padding:25px 20px;min-height:170px;backdrop-filter:blur(8px)}
+.card .symbol{font-size:26px}.card h3{font-size:20px;font-weight:400;margin:14px 0 8px}.card p{font:13px/1.7 Arial,sans-serif;color:var(--muted);margin:0}
+.letter{max-width:690px;margin:auto;border:1px solid #f5b8dc55;border-radius:24px;padding:clamp(25px,5vw,48px);background:linear-gradient(145deg,#ffffff12,#ffffff05);box-shadow:0 20px 80px #05030c55;text-align:center}
+.letter p{color:#e6dbea;line-height:1.9;font-size:17px}
+.letter .sign{color:var(--pink);font-style:italic;font-size:21px;margin-top:22px}
+.memory-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.memory{aspect-ratio:1/1;border:1px dashed #eab9df77;border-radius:18px;display:grid;place-items:center;text-align:center;padding:14px;background:linear-gradient(145deg,#f5a9d51a,#b7a3ff12);color:#e9d9ed}
+.memory span{display:block;font:11px Arial,sans-serif;color:var(--muted);margin-top:8px}
+.countdown{text-align:center;border:1px solid #e9c6ed33;border-radius:22px;padding:28px;background:#ffffff08;max-width:650px;margin:auto}
+.countdown input{background:#160f2b;border:1px solid #d9b1df66;color:white;padding:12px;border-radius:10px;margin:12px 5px;font:13px Arial,sans-serif}
+#countText{color:var(--pink);font-size:20px;min-height:30px}
+footer{text-align:center;padding:40px 20px 55px;color:#a99db8;font:11px Arial,sans-serif;letter-spacing:1px}
+.heart{color:#ff9ecb}
+@media(max-width:700px){nav{align-items:flex-start;flex-direction:column}nav a{margin:0 13px 0 0}.cards{grid-template-columns:1fr}.memory-grid{grid-template-columns:1fr 1fr}.hero{min-height:70vh}.moon{width:76px;height:76px}.moon:after{width:70px;height:70px;left:18px}}
+</style>
+</head>
+<body>
+<div class="stars"></div>
+<nav><div class="brand">A K I <span class="heart">×</span> Y U K I</div><div><a href="#story">OUR WORLD</a><a href="#letter">A NOTE</a><a href="#memories">MEMORIES</a></div></nav>
+<main>
+<header class="hero">
+  <div>
+    <div class="moon"></div>
+    <div class="eyebrow">two hearts · one little universe</div>
+    <h1>AKI <span class="heart">×</span> YUKI</h1>
+    <p class="subtitle">In a universe full of stars, some people become your favourite constellation. This little corner of the sky is ours.</p>
+    <a class="btn" href="#story">STEP INTO OUR UNIVERSE ✦</a>
+  </div>
+</header>
+<section id="story">
+  <div class="section-kicker">A place made for two</div><h2>Our Little Universe</h2>
+  <p class="lead">Not a perfect story. Just two people, little moments, silly smiles, and memories worth keeping.</p>
+  <div class="cards">
+    <article class="card"><div class="symbol">☾</div><h3>Our moments</h3><p>The small conversations and ordinary days that somehow become special.</p></article>
+    <article class="card"><div class="symbol">✧</div><h3>Our promises</h3><p>Be honest, listen with care, respect each other, and keep choosing kindness.</p></article>
+    <article class="card"><div class="symbol">♡</div><h3>Our tomorrow</h3><p>More laughs, new places, shared songs, and memories still waiting to happen.</p></article>
+  </div>
+</section>
+<section id="letter">
+  <div class="section-kicker">A little note</div><h2>For Yuki 💌</h2>
+  <div class="letter">
+    <p>Hey Yuki,</p>
+    <p>This page is a tiny universe made just for us. I hope it reminds you that even the simplest moments can mean a lot. Thank you for being part of my story. Let's keep making memories, one day at a time.</p>
+    <p class="sign">— Yours, Aki ♡</p>
+  </div>
+</section>
+<section id="memories">
+  <div class="section-kicker">Little things, forever favourites</div><h2>Our Memory Stars</h2>
+  <p class="lead">Replace these spaces with your own photos and captions whenever you like.</p>
+  <div class="memory-grid">
+    <div class="memory">✦<div>Our first memory<span>Add a photo + date</span></div></div>
+    <div class="memory">♡<div>A favourite day<span>Add a photo + caption</span></div></div>
+    <div class="memory">☾<div>A moment to remember<span>Add a photo + caption</span></div></div>
+  </div>
+</section>
+<section>
+  <div class="section-kicker">A date to remember</div><h2>Our Special Day</h2>
+  <div class="countdown">
+    <p class="lead" style="margin-bottom:8px">Choose a date that means something to both of you.</p>
+    <input type="date" id="specialDate" aria-label="Choose your special date">
+    <div id="countText">Our story is made of moments. ♡</div>
+  </div>
+</section>
+</main>
+<footer>MADE WITH <span class="heart">♥</span> FOR AKI × YUKI · OUR LITTLE UNIVERSE</footer>
+<script>
+const dateInput=document.getElementById('specialDate');
+const countText=document.getElementById('countText');
+dateInput.addEventListener('change',()=>{
+ if(!dateInput.value){countText.textContent='Our story is made of moments. ♡';return}
+ const chosen=new Date(dateInput.value+'T00:00:00');
+ const today=new Date();today.setHours(0,0,0,0);
+ const diff=Math.round((today-chosen)/86400000);
+ if(diff===0) countText.textContent='Today is your special day. Make it beautiful. ♡';
+ else if(diff>0) countText.textContent=diff+' days of memories since that date. ✨';
+ else countText.textContent='Only '+Math.abs(diff)+' days to go until your chosen date. ✧';
+});
+</script>
+</body></html>
